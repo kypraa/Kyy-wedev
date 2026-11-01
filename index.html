@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kyy Web Development</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Space+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <div class="bar">
+      <div class="logo">Kyy Web Development</div>
+      <div class="row">
+        <span id="mwrap"><button id="musicBtn" aria-label="Putar atau hentikan musik"></button><span id="mtip" role="status">Play Music!</span></span>
+        <button id="theme" aria-label="Ganti tema">Tema</button>
+        <button id="menuBtn" aria-expanded="false" aria-controls="menu">Menu</button>
+      </div>
+    </div>
+    <div id="menu" hidden>
+      <a href="#home" class="on">Home</a>
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <button id="adminBtn">Menu admin</button>
+    </div>
+  </nav>
+
+  <header class="box hero" id="home" data-view="home">
+    <h1>Semua project-ku, <span>satu tempat.</span></h1>
+    <p>Simpan, cari, dan buka lagi project HTML, CSS, JavaScript, sampai fullstack kapan saja.</p>
+    <div class="stats" id="stats"></div>
+  </header>
+
+  <section class="box" id="admin" hidden aria-label="Menu admin">
+    <div id="login">
+      <h2>Masuk admin</h2>
+      <form id="loginForm" autocomplete="off">
+        <label>Username<input id="l-user" required autocomplete="username"></label>
+        <label>Password<input id="l-pass" type="password" required autocomplete="current-password"></label>
+        <p class="err" id="err" role="alert"></p>
+        <div class="row"><button class="primary" type="submit">Masuk</button><button type="button" id="closeAdmin">Tutup</button></div>
+      </form>
+    </div>
+    <div id="panel" hidden>
+      <div class="row" style="justify-content:space-between;align-items:center">
+        <h2 style="margin:0">Menu admin</h2>
+        <div class="row"><button class="primary" id="addBtn">+ Tambah project</button><button id="export">Ekspor JSON</button><button id="import">Impor JSON</button><button id="logout">Keluar</button></div>
+      </div>
+      <input id="file" type="file" accept="application/json" hidden>
+      <div id="vbox"><strong>Total pengunjung unik: <span id="vcount">0</span></strong><ul id="visitors" class="note" style="margin:6px 0 0;padding-left:20px;max-height:160px;overflow:auto"><li>Memuat...</li></ul></div>
+      
+    </div>
+  </section>
+
+  <main id="projects" data-view="home">
+    <div class="tools"><input id="q" type="search" placeholder="Cari nama, teknologi, deskripsi..." aria-label="Cari project"></div>
+    <div class="chips" id="chips"></div>
+    <div class="grid" id="grid"></div>
+  </main>
+  <section class="box sec" id="about" data-view="about"><h2>About</h2><p>Halo, saya Kyy. Saya membuat website dan aplikasi dengan HTML, CSS, JavaScript, dan backend. Semua project saya dikumpulkan di halaman ini.</p></section>
+  <section class="box sec" id="contact" data-view="contact" style="background:var(--api);color:#111"><h2>Contact</h2><p>Tertarik dengan salah satu project atau ingin bekerja sama? Hubungi saya untuk berdiskusi Email saya reskyprasetya34@gmail.com.</p></section>
+</div>
+<div id="modal" hidden><div class="box mbox"><div class="row" style="justify-content:space-between;align-items:center"><h2 id="formTitle" style="margin:0">Tambah project</h2><button type="button" id="closeModal" aria-label="Tutup">X</button></div><form id="form" autocomplete="off">
+        <label>Nama project<input id="f-title" required maxlength="60" placeholder="Toko Online Kopi"></label>
+        <label>Deskripsi<textarea id="f-desc" maxlength="300" placeholder="Apa yang project ini lakukan?"></textarea></label>
+        <label>Teknologi (pisahkan koma)<input id="f-tech" placeholder="HTML, CSS, Node.js"></label>
+        <label>Link (demo atau repo)<input id="f-url" type="url" placeholder="https://github.com/..."></label>
+        <label>Kategori
+          <select id="f-cat"><option value="web">Website</option><option value="app">Aplikasi</option><option value="api">Backend / API</option><option value="lain">Lainnya</option></select>
+        </label>
+        <div><div style="font-weight:700;font-size:14px;margin-bottom:6px">Warna kartu</div><div class="swatches" id="swatches"></div></div>
+        <div class="row"><button class="primary" type="submit" id="save">Simpan project</button><button type="button" id="cancel">Batal</button></div>
+      </form></div></div>
+<audio id="bgm" preload="auto" src="raindance.mp3"></audio>
+<div id="gate"><div class="box"><h2 style="margin:0">Kyy Web Development</h2><p id="gateMsg" class="note">Memuat...</p><form id="gateForm" hidden><label>Siapa nama Anda?<input id="g-name" required maxlength="60" autocomplete="name" placeholder="Nama Anda"></label><p class="note">Nama Anda hanya dilihat oleh pemilik halaman.</p><button class="primary" type="submit">Lanjut</button></form></div></div>
+<div class="toast" id="toast" hidden></div>
+
+<script src="script.js"></script>
+</body>
+</html>
